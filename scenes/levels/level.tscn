@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctyij1iplqwv0"]
+[gd_scene load_steps=4 format=3 uid="uid://ctyij1iplqwv0"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_e177r"]
 [ext_resource type="PackedScene" uid="uid://c7dtvrb88r310" path="res://scenes/player/player.tscn" id="1_gohde"]
 [ext_resource type="PackedScene" uid="uid://dojjvf1dj0klk" path="res://scenes/objects/vehicles/car.tscn" id="3_m7rdb"]
-[ext_resource type="PackedScene" uid="uid://ch867dj7xp4bc" path="res://scenes/enemies/drone/drone.tscn" id="4_drj84"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_e177r")
@@ -11,8 +10,14 @@ script = ExtResource("1_e177r")
 [node name="Player" parent="." instance=ExtResource("1_gohde")]
 position = Vector2(534, 359)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+
 [node name="Car" parent="." instance=ExtResource("3_m7rdb")]
 position = Vector2(896, 263)
 
-[node name="Drone" parent="." instance=ExtResource("4_drj84")]
-position = Vector2(346, 213)
+[node name="Projectiles" type="Node2D" parent="."]
+
+[connection signal="player_shot_laser" from="Player" to="." method="_on_player_player_shot_laser"]
+[connection signal="player_threw_grenade" from="Player" to="." method="_on_player_player_threw_grenade"]

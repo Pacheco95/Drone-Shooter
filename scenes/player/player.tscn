@@ -14,13 +14,37 @@ height = 118.0
 script = ExtResource("1_rxa67")
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
-position = Vector2(0, -36)
+position = Vector2(31, -18)
+rotation = 1.57079
 texture = ExtResource("1_f8ced")
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, -20)
 shape = SubResource("CircleShape2D_3kayu")
 
 [node name="WeaponCollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(16, -75)
-rotation = 0.210262
+position = Vector2(69, -3)
+rotation = 1.83957
 shape = SubResource("CapsuleShape2D_6xocm")
+
+[node name="LaserCooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="GrenadeCooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="LaserStartPositions" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="LaserStartPositions"]
+position = Vector2(126, -7)
+
+[node name="Marker2D2" type="Marker2D" parent="LaserStartPositions"]
+position = Vector2(123, 10)
+
+[node name="Marker2D3" type="Marker2D" parent="LaserStartPositions"]
+position = Vector2(128, 1)
+
+[connection signal="timeout" from="LaserCooldown" to="." method="_on_laser_cooldown_timeout"]
+[connection signal="timeout" from="GrenadeCooldown" to="." method="_on_grenade_cooldown_timeout"]
