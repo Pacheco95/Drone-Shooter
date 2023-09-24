@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctyij1iplqwv0"]
+[gd_scene load_steps=7 format=3 uid="uid://ctyij1iplqwv0"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_e177r"]
 [ext_resource type="PackedScene" uid="uid://c7dtvrb88r310" path="res://scenes/player/player.tscn" id="1_gohde"]
 [ext_resource type="Texture2D" uid="uid://26g1868w4t7m" path="res://graphics/ground/stones.png" id="2_2w0c0"]
 [ext_resource type="PackedScene" uid="uid://dojjvf1dj0klk" path="res://scenes/objects/vehicles/car.tscn" id="3_m7rdb"]
-[ext_resource type="PackedScene" uid="uid://d31xsiyla08h2" path="res://scenes/projectiles/laser/laser.tscn" id="5_choiw"]
-[ext_resource type="PackedScene" uid="uid://ch867dj7xp4bc" path="res://scenes/enemies/drone/drone.tscn" id="6_c2ifl"]
+[ext_resource type="PackedScene" uid="uid://cve25crfvecfe" path="res://scenes/animations/light_fan/light_fan_anim.tscn" id="6_v0rfi"]
 [ext_resource type="PackedScene" uid="uid://dd7ef3hfj5daf" path="res://scenes/objects/houses/house/house.tscn" id="7_og4rn"]
 
 [node name="Level" type="Node2D"]
@@ -31,19 +30,18 @@ visible = false
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 
-[node name="Laser" parent="Player" instance=ExtResource("5_choiw")]
-position = Vector2(712.372, 159.901)
-rotation = 1.83259
-
 [node name="Car" parent="." instance=ExtResource("3_m7rdb")]
 position = Vector2(571, -1050)
 rotation = -4.71238
 
 [node name="Projectiles" type="Node2D" parent="."]
 
-[node name="Drone" parent="." instance=ExtResource("6_c2ifl")]
-position = Vector2(-867, -440)
-rotation = -2.61799
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.65
+
+[node name="LightFanAnim" parent="." instance=ExtResource("6_v0rfi")]
+position = Vector2(-2042, -1316)
+scale = Vector2(1.5, 1.5)
 
 [connection signal="player_shot_laser" from="Player" to="." method="_on_player_player_shot_laser"]
 [connection signal="player_threw_grenade" from="Player" to="." method="_on_player_player_threw_grenade"]
