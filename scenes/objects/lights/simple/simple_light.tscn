@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0r6o3f6x5u6x"]
+
+[ext_resource type="Texture2D" uid="uid://dd7l2xgen087r" path="res://graphics/objects/light.png" id="1_qpw70"]
+[ext_resource type="Texture2D" uid="uid://q0hbc6r421e5" path="res://graphics/lights/textures/circle.png" id="2_rwbsa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5nuk"]
+radius = 17.2
+height = 197.92
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y7kep"]
+polygon = PackedVector2Array(-76.6296, 17.2185, -83, 17, -88, 16, -93, 13, -96, 9, -98, 5, -99, 0, -98, -5, -95, -10, -90, -14, -84, -16, -78, -17, -70.3506, -17.2848, -47.0603, -17.2848, 76.3741, -17.2406, 82.0309, -17.2406, 86.5829, -16.5335, 91.0023, -14.5447, 94.8914, -10.9208, 97.6756, -6.14786, 98.9131, -0.756168, 98.4711, 4.28197, 96.394, 9.18752, 93.0353, 12.7672, 88.1297, 15.5957, 82.6938, 17.3192, 76.4624, 17.1867, 76.4554, 10.472, 76.3562, -0.441338, 75.0664, -4.50905, 72.1893, -8.87441, 67.5263, -11.1563, -66.8076, -11.2555, -72.2643, -9.46969, -75.0422, -4.50906, -76.332, 1.34448)
+
+[node name="SimpleLight" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u5nuk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_qpw70")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-3, 0)
+color = Color(0, 0.929412, 0.94902, 1)
+energy = 6.43
+shadow_enabled = true
+shadow_filter_smooth = 0.1
+texture = ExtResource("2_rwbsa")
+texture_scale = 2.23
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_y7kep")
