@@ -1,14 +1,140 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctyij1iplqwv0"]
+[gd_scene load_steps=14 format=3 uid="uid://ctyij1iplqwv0"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_e177r"]
 [ext_resource type="PackedScene" uid="uid://c7dtvrb88r310" path="res://scenes/player/player.tscn" id="1_gohde"]
+[ext_resource type="Texture2D" uid="uid://26g1868w4t7m" path="res://graphics/ground/stones.png" id="2_2w0c0"]
 [ext_resource type="PackedScene" uid="uid://dojjvf1dj0klk" path="res://scenes/objects/vehicles/car.tscn" id="3_m7rdb"]
+[ext_resource type="Texture2D" uid="uid://usmou4onn016" path="res://graphics/decals/blood.png" id="3_uhaws"]
+[ext_resource type="Texture2D" uid="uid://bkp8u7x38ao42" path="res://graphics/tilesets/outside_walls.png" id="4_ou30c"]
+[ext_resource type="Texture2D" uid="uid://bsja2qghicsnc" path="res://graphics/tilesets/soil.png" id="5_sioeh"]
+[ext_resource type="Texture2D" uid="uid://cdgyc8onsrm1n" path="res://graphics/tilesets/interior.png" id="6_db5cl"]
+[ext_resource type="PackedScene" uid="uid://dd7ef3hfj5daf" path="res://scenes/objects/houses/house/house.tscn" id="7_og4rn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onk28"]
+resource_name = "walls"
+texture = ExtResource("4_ou30c")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ans2g"]
+resource_name = "soil"
+texture = ExtResource("5_sioeh")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sftp8"]
+resource_name = "interior"
+texture = ExtResource("6_db5cl")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+3:6/0 = 0
+5:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+6:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+5:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_n1856"]
+tile_size = Vector2i(390, 390)
+sources/0 = SubResource("TileSetAtlasSource_onk28")
+sources/1 = SubResource("TileSetAtlasSource_ans2g")
+sources/2 = SubResource("TileSetAtlasSource_sftp8")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_e177r")
 
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Soil" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+texture = ExtResource("2_2w0c0")
+region_enabled = true
+region_rect = Rect2(0, 0, 19200, 12800)
+
+[node name="Decoration" type="Sprite2D" parent="Ground"]
+position = Vector2(760, 402)
+texture = ExtResource("3_uhaws")
+
+[node name="TileMap" type="TileMap" parent="Ground"]
+tile_set = SubResource("TileSet_n1856")
+format = 2
+layer_0/name = "Soil"
+layer_1/name = "Walls"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Floor"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
+
+[node name="House" parent="Ground" instance=ExtResource("7_og4rn")]
+position = Vector2(-1155, -1087)
+
 [node name="Player" parent="." instance=ExtResource("1_gohde")]
 position = Vector2(534, 359)
+movement_velocity = 500
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.6, 0.6)
