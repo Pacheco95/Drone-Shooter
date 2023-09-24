@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch867dj7xp4bc"]
+[gd_scene load_steps=5 format=3 uid="uid://ch867dj7xp4bc"]
 
 [ext_resource type="Script" path="res://scenes/enemies/drone/drone.gd" id="1_1qdgm"]
 [ext_resource type="Texture2D" uid="uid://c4y5gnw1j1dwd" path="res://graphics/enemies/drone.png" id="1_7l1u3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qddcc"]
 radius = 73.1642
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gkak2"]
+cull_mode = 1
+polygon = PackedVector2Array(0.847043, -73.9952, 35.7303, -63.5952, 60.4768, -41.3105, 140.38, -32.3953, 150.013, -0.282889, 73.9723, 2.84691, 62.5266, 41.7184, 24.22, 68.2817, -21.7999, 69.755, -56.5458, 47.3559, -72.1441, 12.175, -149.185, 15.2934, -141.785, -19.6242, -63.5837, -36.7302, -36.265, -64.4193)
 
 [node name="Drone" type="CharacterBody2D"]
 collision_layer = 2
@@ -21,3 +25,7 @@ shape = SubResource("CircleShape2D_qddcc")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -3)
 polygon = PackedVector2Array(-142, -14, -148, 19, 150, 1, 140, -31, -1, -46)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+rotation = -0.0114468
+occluder = SubResource("OccluderPolygon2D_gkak2")

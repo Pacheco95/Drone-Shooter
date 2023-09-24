@@ -328,6 +328,11 @@ position = Vector2(193, 875)
 rotation = 6.28318
 scale = Vector2(0.48, 0.48)
 
+[node name="WallLamp6" parent="." instance=ExtResource("3_uq358")]
+position = Vector2(1318, -173)
+rotation = 4.71238
+scale = Vector2(0.48, 0.48)
+
 [node name="WallLamp4" parent="." instance=ExtResource("3_uq358")]
 position = Vector2(-2068, 448)
 rotation = 10.9956
