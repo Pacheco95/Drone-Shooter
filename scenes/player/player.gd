@@ -5,6 +5,7 @@ const Utils = preload("res://scripts/utils.gd")
 signal player_shot_laser(pos, direction)
 signal player_threw_grenade(pos, direction)
 
+@export var max_velocity := 600
 @export var movement_velocity := 600
 @export var deadzone := 0.1
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://dd7ef3hfj5daf"]
+[gd_scene load_steps=31 format=3 uid="uid://dd7ef3hfj5daf"]
 
+[ext_resource type="Script" path="res://scenes/objects/houses/house/house.gd" id="1_8cmhn"]
 [ext_resource type="Texture2D" uid="uid://cdgyc8onsrm1n" path="res://graphics/tilesets/interior.png" id="1_djad3"]
 [ext_resource type="PackedScene" uid="uid://c0r6o3f6x5u6x" path="res://scenes/objects/lights/simple/simple_light.tscn" id="2_ycajm"]
 [ext_resource type="PackedScene" uid="uid://ddu2lec8ikhpc" path="res://scenes/objects/lights/wall_lamp.tscn" id="3_uq358"]
@@ -277,6 +278,7 @@ sources/0 = SubResource("TileSetAtlasSource_nlimt")
 
 [node name="House" type="Area2D"]
 collision_layer = 16
+script = ExtResource("1_8cmhn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(196, 3)
@@ -302,48 +304,52 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(-131072, 65536, 6, -4, 65536, 7, -196608, 327680, 6, -5, 0, 6, -6, 262144, 7, 65532, 65536, 6, 2, 0, 7, 65538, 65536, 6, 3, 65536, 8, 131074, 327680, 8, -65533, 131072, 8, -131070, 0, 6, -131069, 65536, 7, -65532, 0, 6, 0, 65536, 6, -65536, 65536, 6, 65534, 65536, 6, 131070, 65536, 6, 196606, 327680, 8)
 
-[node name="SimpleLight" parent="." instance=ExtResource("2_ycajm")]
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="SimpleLight" parent="Lights" instance=ExtResource("2_ycajm")]
 position = Vector2(1996, 867)
 rotation = 3.14159
 
-[node name="SimpleLight2" parent="." instance=ExtResource("2_ycajm")]
+[node name="SimpleLight2" parent="Lights" instance=ExtResource("2_ycajm")]
 position = Vector2(2455, -425)
 rotation = 1.57079
 
-[node name="SimpleLight3" parent="." instance=ExtResource("2_ycajm")]
+[node name="SimpleLight3" parent="Lights" instance=ExtResource("2_ycajm")]
 position = Vector2(260, -402)
 rotation = -1.57079
 
-[node name="SimpleLight4" parent="." instance=ExtResource("2_ycajm")]
+[node name="SimpleLight4" parent="Lights" instance=ExtResource("2_ycajm")]
 position = Vector2(-2070, -529)
-rotation = 4.71238
+rotation = -1.57081
 
-[node name="WallLamp" parent="." instance=ExtResource("3_uq358")]
+[node name="WallLamp" parent="Lights" instance=ExtResource("3_uq358")]
 position = Vector2(2459, 202)
-rotation = 4.71238
+rotation = -1.57081
 scale = Vector2(0.48, 0.48)
 
-[node name="WallLamp3" parent="." instance=ExtResource("3_uq358")]
+[node name="WallLamp3" parent="Lights" instance=ExtResource("3_uq358")]
 position = Vector2(193, 875)
-rotation = 6.28318
 scale = Vector2(0.48, 0.48)
 
-[node name="WallLamp6" parent="." instance=ExtResource("3_uq358")]
+[node name="WallLamp6" parent="Lights" instance=ExtResource("3_uq358")]
 position = Vector2(1318, -173)
-rotation = 4.71238
+rotation = -1.57081
 scale = Vector2(0.48, 0.48)
 
-[node name="WallLamp4" parent="." instance=ExtResource("3_uq358")]
+[node name="WallLamp4" parent="Lights" instance=ExtResource("3_uq358")]
 position = Vector2(-2068, 448)
-rotation = 10.9956
+rotation = -1.57077
 scale = Vector2(0.48, 0.48)
 
-[node name="WallLamp5" parent="." instance=ExtResource("3_uq358")]
+[node name="WallLamp5" parent="Lights" instance=ExtResource("3_uq358")]
 position = Vector2(-741, -879)
-rotation = 9.42476
+rotation = 3.14157
 scale = Vector2(0.48, 0.48)
 
-[node name="WallLamp2" parent="." instance=ExtResource("3_uq358")]
+[node name="WallLamp2" parent="Lights" instance=ExtResource("3_uq358")]
 position = Vector2(1674, -877)
 rotation = 3.14159
 scale = Vector2(0.48, 0.48)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
