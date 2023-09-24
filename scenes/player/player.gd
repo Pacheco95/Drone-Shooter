@@ -5,8 +5,8 @@ const Utils = preload("res://scripts/utils.gd")
 signal player_shot_laser(pos, direction)
 signal player_threw_grenade(pos, direction)
 
-@export var movement_velocity = 300
-@export var deadzone = 0.1
+@export var movement_velocity := 600
+@export var deadzone := 0.1
 
 var can_laser: bool = true
 var can_grenade: bool = true
