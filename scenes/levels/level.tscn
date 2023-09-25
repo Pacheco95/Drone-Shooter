@@ -1,25 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctyij1iplqwv0"]
+[gd_scene load_steps=4 format=3 uid="uid://ctyij1iplqwv0"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_e177r"]
 [ext_resource type="PackedScene" uid="uid://c7dtvrb88r310" path="res://scenes/player/player.tscn" id="1_gohde"]
-[ext_resource type="Texture2D" uid="uid://26g1868w4t7m" path="res://graphics/ground/stones.png" id="2_2w0c0"]
-[ext_resource type="PackedScene" uid="uid://dojjvf1dj0klk" path="res://scenes/objects/vehicles/car.tscn" id="3_m7rdb"]
-[ext_resource type="PackedScene" uid="uid://cve25crfvecfe" path="res://scenes/animations/light_fan/light_fan_anim.tscn" id="6_v0rfi"]
-[ext_resource type="PackedScene" uid="uid://dd7ef3hfj5daf" path="res://scenes/objects/houses/house/house.tscn" id="7_og4rn"]
+[ext_resource type="PackedScene" uid="uid://ddw707vgvyixe" path="res://scenes/ui/ui.tscn" id="3_i6rdl"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_e177r")
 
 [node name="Ground" type="Node2D" parent="."]
 
-[node name="Soil" type="Sprite2D" parent="Ground"]
-texture_repeat = 2
-texture = ExtResource("2_2w0c0")
-region_enabled = true
-region_rect = Rect2(0, 0, 19200, 12800)
-
-[node name="House" parent="Ground" instance=ExtResource("7_og4rn")]
-position = Vector2(-1155, -1087)
+[node name="Projectiles" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_gohde")]
 position = Vector2(142, 137)
@@ -29,21 +19,9 @@ movement_velocity = 500
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
-[node name="Car" parent="." instance=ExtResource("3_m7rdb")]
-position = Vector2(571, -1050)
-rotation = -4.71238
+[node name="UI" parent="." instance=ExtResource("3_i6rdl")]
 
-[node name="Projectiles" type="Node2D" parent="."]
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.65
-
-[node name="LightFanAnim" parent="." instance=ExtResource("6_v0rfi")]
-position = Vector2(-2042, -1316)
-scale = Vector2(1.5, 1.5)
-
-[connection signal="player_entered_house" from="Ground/House" to="." method="_on_house_player_entered_house"]
-[connection signal="player_exited_house" from="Ground/House" to="." method="_on_house_player_exited_house"]
 [connection signal="player_shot_laser" from="Player" to="." method="_on_player_player_shot_laser"]
 [connection signal="player_threw_grenade" from="Player" to="." method="_on_player_player_threw_grenade"]

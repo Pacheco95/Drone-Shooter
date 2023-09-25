@@ -26,12 +26,14 @@ func _process(_delta):
 	var laser_markers = $LaserStartPositions.get_children()
 	var laser_marker = Utils.pick_random(laser_markers)
 
-	if Input.is_action_pressed("primary action") and can_laser:
+	if Input.is_action_pressed("primary action") and can_laser and Globals.laser_amount > 0:
+		Globals.laser_amount -= 1
 		player_shot_laser.emit(laser_marker.global_position, player_direction)
 		$LaserCooldown.start()
 		can_laser = false
 	
-	if Input.is_action_pressed("secondary action") and can_grenade:
+	if Input.is_action_pressed("secondary action") and can_grenade and Globals.grenade_amount > 0:
+		Globals.grenade_amount -= 1
 		player_threw_grenade.emit(laser_marker.global_position, player_direction)
 		$GrenadeCooldown.start()
 		can_grenade = false
