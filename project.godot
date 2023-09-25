@@ -11,18 +11,19 @@ config_version=5
 [application]
 
 config/name="Drone Shooter"
-run/main_scene="res://scenes/levels/outside.tscn"
+run/main_scene="res://scenes/levels/outside/outside.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+TransitionLayer="*res://scenes/globals/transition_layer/transition_layer.tscn"
 Globals="*res://scripts/globals.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=800
+window/size/viewport_height=600
 
 [input]
 

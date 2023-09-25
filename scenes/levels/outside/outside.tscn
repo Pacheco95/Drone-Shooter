@@ -1,14 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bujixqiyvjx31"]
+[gd_scene load_steps=8 format=3 uid="uid://bujixqiyvjx31"]
 
 [ext_resource type="PackedScene" uid="uid://ctyij1iplqwv0" path="res://scenes/levels/level.tscn" id="1_087n7"]
 [ext_resource type="Texture2D" uid="uid://26g1868w4t7m" path="res://graphics/ground/stones.png" id="2_4hegs"]
-[ext_resource type="Script" path="res://scenes/levels/outside.gd" id="2_etqh7"]
+[ext_resource type="Script" path="res://scenes/levels/outside/outside.gd" id="2_luasg"]
 [ext_resource type="PackedScene" uid="uid://dd7ef3hfj5daf" path="res://scenes/objects/houses/house/house.tscn" id="3_2b5px"]
 [ext_resource type="PackedScene" uid="uid://cve25crfvecfe" path="res://scenes/animations/light_fan/light_fan_anim.tscn" id="5_quvox"]
 [ext_resource type="PackedScene" uid="uid://dojjvf1dj0klk" path="res://scenes/objects/vehicles/car.tscn" id="6_dkj18"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lt0x6"]
+size = Vector2(372, 156)
+
 [node name="Outside" instance=ExtResource("1_087n7")]
-script = ExtResource("2_etqh7")
+script = ExtResource("2_luasg")
 
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2
@@ -29,3 +32,12 @@ scale = Vector2(1.5, 1.5)
 [node name="Car" parent="." index="6" instance=ExtResource("6_dkj18")]
 position = Vector2(-2908, -825)
 rotation = -3.14159
+
+[node name="Area2D" type="Area2D" parent="." index="7"]
+position = Vector2(211, -179)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, 52)
+shape = SubResource("RectangleShape2D_lt0x6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
