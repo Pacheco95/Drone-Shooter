@@ -9,12 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://f6hjdvb3fo6o" path="res://graphics/ui/progress_bar/over.png" id="5_iagxq"]
 [ext_resource type="Texture2D" uid="uid://cg5u1pqcvfmub" path="res://graphics/ui/progress_bar/progress.png" id="6_43d1x"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("laser_text", "grenade_text", "laser_ui_texture", "grenade_ui_texture")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("laser_text", "laser_ui_texture", "grenade_text", "grenade_ui_texture", "hp_ui_texture")]
 script = ExtResource("1_1de8w")
 laser_text = NodePath("LaserCounterControl/VBoxContainer/Label")
-grenade_text = NodePath("GrenadeCounterControl/VBoxContainer/Label")
 laser_ui_texture = NodePath("LaserCounterControl/VBoxContainer/TextureRect")
+grenade_text = NodePath("GrenadeCounterControl/VBoxContainer/Label")
 grenade_ui_texture = NodePath("GrenadeCounterControl/VBoxContainer/TextureRect")
+hp_ui_texture = NodePath("MarginContainer/TextureProgressBar")
 ammo_gradient = ExtResource("2_m6pm2")
 
 [node name="LaserCounterControl" type="Control" parent="."]
