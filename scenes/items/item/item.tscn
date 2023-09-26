@@ -10,6 +10,11 @@ radius = 57.0351
 [node name="Item" type="Area2D"]
 collision_layer = 16
 script = ExtResource("1_4gidj")
+item_colors = {
+"grenade": Color(1, 0, 0, 1),
+"health": Color(0, 1, 0, 1),
+"laser": Color(0, 0, 1, 1)
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 0)
