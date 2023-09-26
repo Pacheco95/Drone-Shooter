@@ -35,4 +35,3 @@ func update_grenade_text():
 
 func update_hp_progress_bar():
 	hp_ui_texture.value = Globals.hp_amount
-	hp_ui_texture.modulate = ammo_gradient.sample(float(Globals.hp_amount) / Globals.max_hp_amount)

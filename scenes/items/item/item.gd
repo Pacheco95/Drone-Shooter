@@ -1,7 +1,5 @@
 extends Area2D
 
-signal player_collected_item(item_type: String)
-
 const Utils = preload("res://scripts/utils.gd")
 
 @export var rotation_speed := 4

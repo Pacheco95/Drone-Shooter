@@ -4,7 +4,7 @@ signal hp_changed
 signal laser_changed
 signal grenade_changed
 
-const max_laser_amount := 20
+const max_laser_amount := 50
 const max_grenade_amount := 5
 const max_hp_amount := 100
 

@@ -14,7 +14,7 @@ height = 118.0
 cull_mode = 1
 polygon = PackedVector2Array(-66.6239, -42.6068, -60.6306, 8.71022, -28.0425, 37.5526, 126.283, 15.078, 128.905, -8.89489, 13.5356, -74.8204, -39.2798, -72.5729)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Destroyable", "Entity"]]
 collision_mask = 14
 script = ExtResource("1_rxa67")
 movement_velocity = 1000
@@ -42,6 +42,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="LaserStartPositions" type="Node2D" parent="."]
+position = Vector2(7, 1)
 
 [node name="Marker2D" type="Marker2D" parent="LaserStartPositions"]
 position = Vector2(126, -7)
