@@ -13,6 +13,8 @@ script = ExtResource("1_e177r")
 
 [node name="Projectiles" type="Node2D" parent="."]
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("1_gohde")]
 position = Vector2(142, 137)
 rotation = -4.078

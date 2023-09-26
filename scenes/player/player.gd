@@ -12,10 +12,14 @@ signal player_threw_grenade(pos, direction)
 var can_laser: bool = true
 var can_grenade: bool = true
 
+func _ready():
+	Globals.player_position = position
+
 func _process(_delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * movement_velocity
 	move_and_slide()
+	Globals.player_position = global_position
 
 	look_at(get_global_mouse_position())
 
@@ -37,6 +41,9 @@ func _process(_delta):
 		player_threw_grenade.emit(laser_marker.global_position, player_direction)
 		$GrenadeCooldown.start()
 		can_grenade = false
+
+func hit():
+	Globals.hp_amount -= 1
 
 func _on_laser_cooldown_timeout():
 	can_laser = true
