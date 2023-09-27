@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dojjvf1dj0klk" path="res://scenes/objects/vehicles/car.tscn" id="6_dkj18"]
 [ext_resource type="PackedScene" uid="uid://b2tp17ro44efq" path="res://scenes/container/item_container/toilet/toilet.tscn" id="7_8abbx"]
 [ext_resource type="PackedScene" uid="uid://bxj7q7gsxpown" path="res://scenes/container/item_container/crate/crate.tscn" id="8_28p4j"]
-[ext_resource type="PackedScene" uid="uid://b6eeeerurg05l" path="res://scenes/enemies/scout/scout.tscn" id="8_w81le"]
+[ext_resource type="PackedScene" uid="uid://b5pajgmfljwwl" path="res://scenes/enemies/bug/bug.tscn" id="9_1c02p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lt0x6"]
 size = Vector2(372, 156)
@@ -39,8 +39,8 @@ energy = 0.65
 position = Vector2(-2042, -1316)
 scale = Vector2(1.5, 1.5)
 
-[node name="Scout" parent="Enemies" index="0" instance=ExtResource("8_w81le")]
-position = Vector2(347, 403)
+[node name="Bug" parent="Enemies" index="0" instance=ExtResource("9_1c02p")]
+position = Vector2(374, 977)
 
 [node name="Car" parent="." index="8" instance=ExtResource("6_dkj18")]
 position = Vector2(-2908, -825)

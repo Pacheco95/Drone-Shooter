@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loiw1"]
 radius = 8.0
-height = 102.0
+height = 90.0
 
 [node name="Laser" type="Area2D"]
 collision_layer = 8
@@ -17,7 +17,7 @@ position = Vector2(0, -22)
 texture = ExtResource("1_uhh6j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -53)
+position = Vector2(0, -58)
 shape = SubResource("CapsuleShape2D_loiw1")
 
 [node name="Timer" type="Timer" parent="."]

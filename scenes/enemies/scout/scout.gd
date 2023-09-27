@@ -22,7 +22,6 @@ func hit():
 	if not vulnerable:
 		return
 	
-	# $Sprite2D.material.set_shader_parameter("brightnes", )?
 	create_tween().tween_property($Sprite2D.material, "shader_parameter/brightnes", 0, 0.3).from(0.5)
 
 	health -= 10
