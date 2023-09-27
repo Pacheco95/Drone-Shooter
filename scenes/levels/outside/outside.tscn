@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bujixqiyvjx31"]
+[gd_scene load_steps=10 format=3 uid="uid://bujixqiyvjx31"]
 
 [ext_resource type="PackedScene" uid="uid://ctyij1iplqwv0" path="res://scenes/levels/level.tscn" id="1_087n7"]
 [ext_resource type="Texture2D" uid="uid://26g1868w4t7m" path="res://graphics/ground/stones.png" id="2_4hegs"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dojjvf1dj0klk" path="res://scenes/objects/vehicles/car.tscn" id="6_dkj18"]
 [ext_resource type="PackedScene" uid="uid://b2tp17ro44efq" path="res://scenes/container/item_container/toilet/toilet.tscn" id="7_8abbx"]
 [ext_resource type="PackedScene" uid="uid://bxj7q7gsxpown" path="res://scenes/container/item_container/crate/crate.tscn" id="8_28p4j"]
-[ext_resource type="PackedScene" uid="uid://ch867dj7xp4bc" path="res://scenes/enemies/drone/drone.tscn" id="8_30nwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lt0x6"]
 size = Vector2(372, 156)
@@ -39,9 +38,6 @@ energy = 0.65
 position = Vector2(-2042, -1316)
 scale = Vector2(1.5, 1.5)
 
-[node name="Drone" parent="Enemies" index="0" instance=ExtResource("8_30nwt")]
-position = Vector2(568, 966)
-
 [node name="Car" parent="." index="8" instance=ExtResource("6_dkj18")]
 position = Vector2(-2908, -825)
 rotation = -3.14159
@@ -54,6 +50,6 @@ position = Vector2(0, 52)
 shape = SubResource("RectangleShape2D_lt0x6")
 
 [node name="Player" parent="." index="10"]
-position = Vector2(-290, 925)
+position = Vector2(-36, 1900)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

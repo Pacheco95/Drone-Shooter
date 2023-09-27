@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://datuo63vkuk13" path="res://graphics/explosions/grunge.png" id="33_5yngo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apiq0"]
+resource_local_to_scene = true
 shader = ExtResource("2_pfxy8")
 shader_parameter/brightnes = 0.0
 

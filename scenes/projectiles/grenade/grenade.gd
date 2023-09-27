@@ -5,7 +5,7 @@ const speed = 750
 
 var is_exploding = false
 
-func _process(delta):
+func _process(_delta):
 	if is_exploding:
 		apply_damage()
 

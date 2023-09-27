@@ -38,7 +38,8 @@ func _process(delta):
 
 func hit():
 	hp -= 10
-	create_tween().tween_property($Sprite2D.material, "shader_parameter/brightnes", 0.0, 0.3).from(0.5)
+	create_tween().tween_property($Sprite2D.get_material(), "shader_parameter/brightnes", 0, 0.3).from(0.3)
+	print(self)
 
 func _on_notice_area_body_entered(_body: Node2D):
 	active = true
