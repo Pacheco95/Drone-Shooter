@@ -20,7 +20,8 @@ var grenade_amount := max_grenade_amount:
 
 var hp_amount := 50:
 	set(value):
-		hp_amount = value
+		hp_amount = max(0, value)
 		hp_changed.emit()
 
 var player_position := Vector2.ZERO
+var player_global_position := Vector2.ZERO

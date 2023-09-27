@@ -12,9 +12,9 @@ func _process(_delta):
 	if not active:
 		return
 
-	var direction = (Globals.player_position - position).normalized()
+	var direction = (Globals.player_global_position - position).normalized()
 	velocity = direction * speed
-	look_at(Globals.player_position)
+	look_at(Globals.player_global_position)
 	
 	if not is_player_near:
 		move_and_slide()

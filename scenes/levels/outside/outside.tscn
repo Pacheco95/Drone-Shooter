@@ -1,16 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bujixqiyvjx31"]
+[gd_scene load_steps=11 format=3 uid="uid://bujixqiyvjx31"]
 
 [ext_resource type="PackedScene" uid="uid://ctyij1iplqwv0" path="res://scenes/levels/level.tscn" id="1_087n7"]
 [ext_resource type="Texture2D" uid="uid://26g1868w4t7m" path="res://graphics/ground/stones.png" id="2_4hegs"]
 [ext_resource type="Script" path="res://scenes/levels/outside/outside.gd" id="2_luasg"]
 [ext_resource type="PackedScene" uid="uid://dd7ef3hfj5daf" path="res://scenes/objects/houses/house/house.tscn" id="3_2b5px"]
 [ext_resource type="PackedScene" uid="uid://cve25crfvecfe" path="res://scenes/animations/light_fan/light_fan_anim.tscn" id="5_quvox"]
-[ext_resource type="PackedScene" uid="uid://dojjvf1dj0klk" path="res://scenes/objects/vehicles/car.tscn" id="6_dkj18"]
 [ext_resource type="PackedScene" uid="uid://b2tp17ro44efq" path="res://scenes/container/item_container/toilet/toilet.tscn" id="7_8abbx"]
 [ext_resource type="PackedScene" uid="uid://bxj7q7gsxpown" path="res://scenes/container/item_container/crate/crate.tscn" id="8_28p4j"]
+[ext_resource type="PackedScene" uid="uid://dj4fihnsbdjaa" path="res://scenes/enemies/car/car.tscn" id="9_jtnup"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lt0x6"]
 size = Vector2(372, 156)
+
+[sub_resource type="Curve2D" id="Curve2D_pvlpo"]
+_data = {
+"points": PackedVector2Array(-420.504, 334.978, 420.504, -334.978, 2305, 570, 448, 624, -448, -624, 2313, -2274, 0, 0, 0, 0, -446, -3087, 643.33, -363.675, -643.33, 363.675, -3517, -2915, 16, -648, -16, 648, -4387, -1454, -608, -448, 608, 448, -3610, 449, 0, 0, 0, 0, -1479, 1033, -1019.19, 698.464, 1019.19, -698.464, 2305, 570)
+}
+point_count = 8
 
 [node name="Outside" instance=ExtResource("1_087n7")]
 script = ExtResource("2_luasg")
@@ -38,18 +44,23 @@ energy = 0.65
 position = Vector2(-2042, -1316)
 scale = Vector2(1.5, 1.5)
 
-[node name="Car" parent="." index="8" instance=ExtResource("6_dkj18")]
-position = Vector2(-2908, -825)
-rotation = -3.14159
-
-[node name="Area2D" type="Area2D" parent="." index="9"]
+[node name="Area2D" type="Area2D" parent="." index="8"]
 position = Vector2(211, -311)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 52)
 shape = SubResource("RectangleShape2D_lt0x6")
 
-[node name="Player" parent="." index="10"]
-position = Vector2(-36, 1900)
+[node name="Player" parent="." index="9"]
+position = Vector2(2825, 108)
+rotation = -5.43096
+
+[node name="CarPath" type="Path2D" parent="." index="11"]
+curve = SubResource("Curve2D_pvlpo")
+
+[node name="Car" parent="CarPath" index="0" instance=ExtResource("9_jtnup")]
+position = Vector2(2305, 570)
+rotation = -0.672671
+speed = 0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

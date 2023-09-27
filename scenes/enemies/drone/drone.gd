@@ -28,8 +28,8 @@ func _process(delta):
 	if not active:
 		return
 
-	look_at(Globals.player_position)
-	var direction = (Globals.player_position - position).normalized()
+	look_at(Globals.player_global_position)
+	var direction = (Globals.player_global_position - position).normalized()
 	velocity = direction * speed * delta
 
 	if move_and_collide(velocity):

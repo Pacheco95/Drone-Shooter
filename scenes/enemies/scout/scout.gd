@@ -13,7 +13,7 @@ signal laser(pos, direction)
 
 func _process(_delta):
 	if is_player_nearby:
-		look_at(Globals.player_position)
+		look_at(Globals.player_global_position)
 
 		if can_laser:
 			shoot()
@@ -33,7 +33,7 @@ func die():
 	queue_free()
 
 func shoot():
-	var direction = (Globals.player_position - global_position).normalized()
+	var direction = (Globals.player_global_position - global_position).normalized()
 	var laser_marker := $LaserSpawnPosition.get_children()[spawn_position_index]
 	spawn_position_index = (spawn_position_index + 1) % $LaserSpawnPosition.get_child_count()
 	laser.emit(laser_marker.global_position, direction)
